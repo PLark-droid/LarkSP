@@ -103,10 +103,16 @@ create_subagent_worktree() {
     local timestamp=$(date +%Y%m%d-%H%M%S)
     local worktree_name
 
-    if [[ -n "$issue_number" ]]; then
-        worktree_name="${subagent_type}-issue-${issue_number}-${timestamp}"
+    # Sanitize subagent_type to prevent path traversal
+    local safe_type
+    safe_type=$(echo "$subagent_type" | sed 's/[^a-zA-Z0-9_-]//g')
+    local safe_issue
+    safe_issue=$(echo "$issue_number" | sed 's/[^0-9]//g')
+
+    if [[ -n "$safe_issue" ]]; then
+        worktree_name="${safe_type}-issue-${safe_issue}-${timestamp}"
     else
-        worktree_name="${subagent_type}-${timestamp}"
+        worktree_name="${safe_type}-${timestamp}"
     fi
 
     local worktree_path="$WORKTREE_BASE_DIR/$worktree_name"
@@ -150,7 +156,9 @@ EOF
 
     # VOICEVOX notification (macOS only)
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        osascript -e "display notification \"Worktree created for $subagent_type\" with title \"Miyabi Orchestrator\" sound name \"Glass\"" 2>/dev/null || true
+        local safe_msg
+        safe_msg=$(echo "Worktree created for $safe_type" | sed "s/[\"\\\\]/'/g")
+        osascript -e "display notification \"$safe_msg\" with title \"Miyabi Orchestrator\" sound name \"Glass\"" 2>/dev/null || true
     fi
 
     return 0

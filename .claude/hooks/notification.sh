@@ -85,8 +85,11 @@ send_macos_notification() {
             ;;
     esac
 
-    # Send macOS notification
-    osascript -e "display notification \"$message\" with title \"$title\" sound name \"$sound\""
+    # Send macOS notification (sanitize to prevent AppleScript injection)
+    local safe_title safe_message
+    safe_title=$(echo "$title" | sed "s/[\"\\\\]/'/g")
+    safe_message=$(echo "$message" | sed "s/[\"\\\\]/'/g")
+    osascript -e "display notification \"$safe_message\" with title \"$safe_title\" sound name \"$sound\""
 }
 
 # ==============================

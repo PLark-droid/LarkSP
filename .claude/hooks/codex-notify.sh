@@ -46,7 +46,10 @@ macos_notification() {
   local message="$2"
 
   if command -v osascript &>/dev/null; then
-    osascript -e "display notification \"$message\" with title \"$title\"" 2>/dev/null || true
+    local safe_title safe_message
+    safe_title=$(echo "$title" | sed "s/[\"\\\\]/'/g")
+    safe_message=$(echo "$message" | sed "s/[\"\\\\]/'/g")
+    osascript -e "display notification \"$safe_message\" with title \"$safe_title\"" 2>/dev/null || true
     log "INFO" "macOS notification sent"
   fi
 }
