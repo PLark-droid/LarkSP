@@ -1,0 +1,11 @@
+{
+  "name": "larksp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "LarkSP - Miyabiフレームワークで構築された自律型開発プロジェクト",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No tests configured yet\"",
+    "typecheck": "echo \"No TypeScript configured yet\""
+  }
+}

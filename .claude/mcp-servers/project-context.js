@@ -236,11 +236,11 @@ class ProjectContextServer {
     }
 
     // Get agent implementations
-    const agentsDir = path.join(this.projectRoot, 'agents');
+    const agentsDir = path.join(this.projectRoot, '.claude', 'agents');
     if (fs.existsSync(agentsDir)) {
-      config.agents = fs.readdirSync(agentsDir, { withFileTypes: true })
-        .filter(dirent => dirent.isDirectory())
-        .map(dirent => dirent.name);
+      config.agents = fs.readdirSync(agentsDir)
+        .filter(f => f.endsWith('.md') && f !== 'README.md')
+        .map(f => f.replace('.md', ''));
     }
 
     return {
