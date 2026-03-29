@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/miyabi-priority-check.sh --verbose || echo '\n📋 上記の優先タスクから開始してください'"
+            "command": ".claude/scripts/miyabi-priority-check.sh --verbose || echo '\n📋 上記の優先タスクから開始してください'"
           }
         ]
       }
@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "source ${CLAUDE_PLUGIN_ROOT}/scripts/miyabi_hooks.sh && miyabi_session_end_report"
+            "command": "source .claude/scripts/miyabi_hooks.sh && miyabi_session_end_report"
           }
         ]
       }
@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/voicevox-narrator.sh \"$TOOL_NAME\" \"$TOOL_INPUT\" \"$TOOL_OUTPUT\""
+            "command": ".claude/scripts/voicevox-narrator.sh \"$TOOL_NAME\" \"$TOOL_INPUT\" \"$TOOL_OUTPUT\""
           }
         ]
       },
@@ -39,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/git_work_logger.sh detect Bash \"$TOOL_INPUT\""
+            "command": "bash .claude/scripts/git_work_logger.sh detect Bash \"$TOOL_INPUT\""
           }
         ]
       },
@@ -49,7 +49,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if echo \"$TOOL_INPUT\" | grep -q 'gh pr merge'; then echo '\n✅ PRマージ完了。次の優先タスクを確認中...' && sleep 2 && ${CLAUDE_PLUGIN_ROOT}/scripts/miyabi-priority-check.sh --verbose; fi"
+            "command": "if echo \"$TOOL_INPUT\" | grep -q 'gh pr merge'; then echo '\n✅ PRマージ完了。次の優先タスクを確認中...' && sleep 2 && .claude/scripts/miyabi-priority-check.sh --verbose; fi"
           }
         ]
       },
@@ -59,7 +59,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if echo \"$TOOL_INPUT\" | grep -q 'gh issue close'; then echo '\n✅ Issue完了。次の優先タスクを確認中...' && ${CLAUDE_PLUGIN_ROOT}/scripts/miyabi-priority-check.sh --verbose; fi"
+            "command": "if echo \"$TOOL_INPUT\" | grep -q 'gh issue close'; then echo '\n✅ Issue完了。次の優先タスクを確認中...' && .claude/scripts/miyabi-priority-check.sh --verbose; fi"
           }
         ]
       }
@@ -81,7 +81,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if echo \"$TOOL_INPUT\" | grep -q 'git worktree add'; then ${CLAUDE_PLUGIN_ROOT}/scripts/miyabi-priority-check.sh --enforce || (echo '\n❌ 優先タスクが残っています。先に完了してください。' && exit 1); fi"
+            "command": "if echo \"$TOOL_INPUT\" | grep -q 'git worktree add'; then .claude/scripts/miyabi-priority-check.sh --enforce || (echo '\n❌ 優先タスクが残っています。先に完了してください。' && exit 1); fi"
           }
         ]
       },
@@ -91,7 +91,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if echo \"$TOOL_INPUT\" | grep -q 'gh issue create'; then echo '\n⚠️ 新規Issue作成前に優先順位を確認...' && ${CLAUDE_PLUGIN_ROOT}/scripts/miyabi-priority-check.sh; fi"
+            "command": "if echo \"$TOOL_INPUT\" | grep -q 'gh issue create'; then echo '\n⚠️ 新規Issue作成前に優先順位を確認...' && .claude/scripts/miyabi-priority-check.sh; fi"
           }
         ]
       },
@@ -101,7 +101,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/miyabi-priority-check.sh --json > /tmp/miyabi-current-priority.json && cat /tmp/miyabi-current-priority.json | jq -r '.action_required' | grep -v 'technical_debt' && echo '\n⚠️ 優先タスクがあります。先に対応してください。' || true"
+            "command": ".claude/scripts/miyabi-priority-check.sh --json > /tmp/miyabi-current-priority.json && cat /tmp/miyabi-current-priority.json | jq -r '.action_required' | grep -v 'technical_debt' && echo '\n⚠️ 優先タスクがあります。先に対応してください。' || true"
           }
         ]
       }

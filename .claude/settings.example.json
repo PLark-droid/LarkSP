@@ -1,6 +1,6 @@
 {
   "projectContext": "Autonomous Operations Platform - AI-driven autonomous development system",
-  "workingDirectory": "/Users/shunsuke/Dev/Autonomous-Operations",
+  "workingDirectory": "/Users/hiroki-matsui/LarkSP",
   "preferredStyle": {
     "language": "TypeScript",
     "typeMode": "strict",
@@ -9,12 +9,12 @@
     "testing": "Vitest"
   },
   "agents": {
-    "coordinator": "agents/coordinator/coordinator-agent.ts",
-    "codegen": "agents/codegen/codegen-agent.ts",
-    "review": "agents/review/review-agent.ts",
-    "issue": "agents/issue/issue-agent.ts",
-    "pr": "agents/pr/pr-agent.ts",
-    "deployment": "agents/deployment/deployment-agent.ts"
+    "coordinator": ".claude/agents/coordinator-agent.md",
+    "codegen": ".claude/agents/codegen-agent.md",
+    "review": ".claude/agents/review-agent.md",
+    "issue": ".claude/agents/issue-agent.md",
+    "pr": ".claude/agents/pr-agent.md",
+    "deployment": ".claude/agents/deployment-agent.md"
   },
   "qualityThreshold": {
     "minScore": 80,
@@ -23,10 +23,10 @@
     "eslintErrors": 0
   },
   "escalation": {
-    "techLead": "TechLeadのGitHubユーザー名",
-    "po": "POのGitHubユーザー名",
-    "ciso": "CISOのGitHubユーザー名",
-    "cto": "CTOのGitHubユーザー名"
+    "techLead": "PLark-droid",
+    "po": "PLark-droid",
+    "ciso": "PLark-droid",
+    "cto": "PLark-droid"
   },
   "hooks": {
     "userPromptSubmit": ".claude/hooks/log-commands.sh",

@@ -25,7 +25,7 @@ Monitor and analyze running processes in detail.
 | `process_threads` | Threads within a process | `pid` (required) |
 | `process_io_stats` | Disk I/O statistics (Linux only) | `pid` (required) |
 | `process_environment` | Environment variables of a process | `pid` (required) |
-| `process_signals` | Send signals to process | `pid` (required), `signal` |
+| `process_kill` | Terminate a process by PID | `pid` (required), `signal` |
 
 ## Usage
 

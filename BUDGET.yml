@@ -1,0 +1,22 @@
+# Miyabi Economic Circuit Breaker Configuration
+# This file controls AI agent spending limits
+
+budget:
+  monthly_budget_usd: 100
+  daily_limit_usd: 10
+  per_run_limit_usd: 2
+
+thresholds:
+  warning: 0.7       # 70% of budget
+  critical: 0.9      # 90% of budget
+  emergency: 0.95    # 95% - stop all agents
+
+emergency_actions:
+  - disable_non_critical_workflows
+  - notify_owner
+  - create_budget_report_issue
+
+tracking:
+  provider: github_actions
+  currency: USD
+  reset_day: 1       # 1st of each month
