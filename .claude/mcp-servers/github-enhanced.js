@@ -234,27 +234,27 @@ class GitHubEnhancedServer {
 
     // Feature detection
     if (text.includes('feature') || text.includes('新機能') || text.includes('add')) {
-      labels.push('enhancement');
+      labels.push('✨ type:feature');
     }
 
     // Bug detection
     if (text.includes('bug') || text.includes('fix') || text.includes('error') || text.includes('バグ')) {
-      labels.push('bug');
+      labels.push('🐛 type:bug');
     }
 
     // Documentation detection
     if (text.includes('documentation') || text.includes('docs') || text.includes('readme') || text.includes('ドキュメント')) {
-      labels.push('documentation');
+      labels.push('📚 type:docs');
     }
 
     // Security detection
     if (text.includes('security') || text.includes('vulnerability') || text.includes('セキュリティ')) {
-      labels.push('security');
+      labels.push('🔒 special:security');
     }
 
     // Performance detection
     if (text.includes('performance') || text.includes('optimize') || text.includes('パフォーマンス')) {
-      labels.push('performance');
+      labels.push('⚡ special:performance');
     }
 
     return labels;
@@ -267,7 +267,7 @@ class GitHubEnhancedServer {
       owner: this.owner,
       repo: this.repo,
       state,
-      labels: '🤖agent-execute',
+      labels: '🤖 agent:coordinator',
       per_page: 100,
     });
 

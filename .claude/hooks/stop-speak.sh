@@ -127,7 +127,9 @@ send_notification() {
     local message="$1"
     local sound="Glass"
 
-    osascript -e "display notification \"$message\" with title \"Claude Code Stopped\" sound name \"$sound\"" 2>/dev/null || true
+    local safe_message
+    safe_message=$(echo "$message" | sed "s/[\"\\\\]/'/g")
+    osascript -e "display notification \"$safe_message\" with title \"Claude Code Stopped\" sound name \"$sound\"" 2>/dev/null || true
 }
 
 # ==============================

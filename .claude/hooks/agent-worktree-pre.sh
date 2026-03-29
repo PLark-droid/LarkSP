@@ -23,9 +23,9 @@ parse_task_input() {
     input=$(cat)
 
     # Extract fields using jq
-    SUBAGENT_TYPE=$(echo "$input" | jq -r '.subagent_type // .type // "unknown"')
-    TASK_DESC=$(echo "$input" | jq -r '.description // .prompt // "task"')
-    ISSUE_NUMBER=$(echo "$input" | jq -r '.issue_number // .issue // ""')
+    SUBAGENT_TYPE=$(echo "$input" | jq -r '.subagent_type // .type // "unknown"' | sed 's/[^a-zA-Z0-9_-]//g')
+    TASK_DESC=$(echo "$input" | jq -r '.description // .prompt // "task"' | sed 's/["\`$]//g')
+    ISSUE_NUMBER=$(echo "$input" | jq -r '.issue_number // .issue // ""' | sed 's/[^0-9]//g')
     PROMPT=$(echo "$input" | jq -r '.prompt // ""')
 
     log INFO "Parsed Task input: subagent=$SUBAGENT_TYPE, issue=$ISSUE_NUMBER, desc=$TASK_DESC"

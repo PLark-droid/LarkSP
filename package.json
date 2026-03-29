@@ -1,0 +1,14 @@
+{
+  "name": "larksp",
+  "version": "1.0.0",
+  "description": "LarkSP - Miyabiフレームワークで構築された自律型開発プロジェクト",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No tests configured yet\"",
+    "typecheck": "echo \"No TypeScript configured yet\""
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@octokit/rest": "^20.0.0"
+  }
+}
