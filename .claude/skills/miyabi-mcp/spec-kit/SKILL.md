@@ -4,7 +4,7 @@ description: Spec-Driven Development toolkit. Use when initializing specs, creat
 allowed-tools: Bash, Read, Write, Edit
 ---
 
-# Spec-Kit (9 tools)
+# Spec-Kit (10 tools)
 
 Spec-Driven Development: define features formally, plan implementation, track tasks.
 
@@ -21,6 +21,7 @@ Spec-Driven Development: define features formally, plan implementation, track ta
 | `speckit_analyze` | Analyze spec-implementation consistency | `path` |
 | `speckit_list_features` | List all features with status | `path` |
 | `speckit_validate` | Validate spec completeness | `feature` (required), `path` |
+| `speckit_constitution` | Read or update project constitution (principles, constraints) | `path` |
 
 ## Usage
 

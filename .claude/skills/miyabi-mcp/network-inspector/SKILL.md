@@ -4,7 +4,7 @@ description: Network diagnostics and monitoring. Use when checking network inter
 allowed-tools: Bash, Read
 ---
 
-# Network Inspector (15 tools)
+# Network Inspector (14 tools)
 
 Comprehensive network diagnostics and monitoring.
 
@@ -26,7 +26,6 @@ Comprehensive network diagnostics and monitoring.
 | `network_route_table` | IP routing table | - |
 | `network_ssl_check` | SSL/TLS certificate check (expiry, issuer) | `host` (required), `port` |
 | `network_traceroute` | Trace network path to host | `host` (required), `maxHops` |
-| `network_http_check` | HTTP endpoint health check | `url` (required) |
 
 ## Usage
 

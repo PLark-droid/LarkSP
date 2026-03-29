@@ -19,7 +19,7 @@ Monitor Claude Code/Desktop configuration, sessions, and logs.
 | `claude_log_search` | Search Claude logs for patterns | `query` (required) |
 | `claude_log_files` | List all Claude Code log files | - |
 | `claude_background_shells` | Background shell processes by Claude Code | - |
-| `claude_code_monitor` | Claude Code process monitoring | - |
+| `claude_status` | Complete Claude status: config, MCP servers, session, logs | - |
 
 ## Usage
 

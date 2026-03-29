@@ -14,10 +14,10 @@ Monitor and inspect Kubernetes cluster resources.
 |------|-------------|----------------|
 | `k8s_get_pods` | List pods with status and restarts | `namespace`, `allNamespaces` |
 | `k8s_get_deployments` | List deployments with replica status | `namespace`, `allNamespaces` |
-| `k8s_get_services` | List services with types and ports | `namespace`, `allNamespaces` |
 | `k8s_logs` | Get pod logs | `pod` (required), `namespace`, `container`, `tail`, `since` |
 | `k8s_describe` | Detailed resource info (events, conditions) | `resource` (required), `name` (required), `namespace` |
-| `k8s_get_nodes` | List cluster nodes with status | - |
+| `k8s_apply` | Apply K8s manifest from file or stdin | `file` (required), `namespace` |
+| `k8s_delete` | Delete K8s resource by type and name | `resource` (required), `name` (required), `namespace` |
 
 ## Usage
 
@@ -32,4 +32,4 @@ mcp__miyabi-mcp-bundle__k8s_get_deployments { "allNamespaces": true }
 
 - Pod debugging: `k8s_logs`, `k8s_describe`
 - Cluster overview: `k8s_get_pods`, `k8s_get_deployments`, `k8s_get_nodes`
-- Service discovery: `k8s_get_services`
+- Resource management: `k8s_apply`, `k8s_delete`
